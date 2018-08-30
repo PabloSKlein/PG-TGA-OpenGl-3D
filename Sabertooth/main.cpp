@@ -11,11 +11,14 @@
 #include "Mesh.h"
 #include "Group.h"
 #include "Face.h"
+#include "Material.h"
 
 
 Mesh *mesh;
 Group *group;
 Face *face;
+
+vector<Material> materialLib;
 
 void read() {
 
@@ -26,12 +29,25 @@ void drawScene() {
 }
 
 int main() {
-	mesh = new Mesh();
+
+	face = new Face;
+
 	group = new Group();
-	face = new Face();
 
-	face->norms = glm::vec2(1.0f)
+	group->faces.push_back(face);
 
-	mesh->groups = 
+	/*for
 
+		f = group->faces[i];
+		for
+			vi = f->verts[j];
+			vec3* v = mesh->vertices[vi];
+
+	mesh = new Mesh();*/
+
+
+
+	//mesh->mappings.push_back(new glm::vec2(0, 0));
+	//mesh->mappings[0]->x = 0;
+	//vector<glm::vec2 *> vector_mappings = new vector<glm::vec2*>();
 }

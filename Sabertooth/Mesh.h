@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <chrono>
 #include <math.h>
-
 #include "Group.h"
 #include <vector>
 
@@ -19,12 +18,11 @@ public:
 	Mesh();
 	~Mesh();
 
-	vector<Group*> *groups;
+	vector<Group*> groups;
 
-	vector<glm::vec2 *> *mappings;
-	glm::vec3 vertex;
-	glm::vec3 normals;
-
+	vector<glm::vec2 *> mappings;
+	vector<glm::vec3 *> vertex;
+	vector<glm::vec3 *> normals;
 
 
 };

@@ -20,9 +20,9 @@ public:
 	Face();
 	~Face();
 
-	vector<int> *verts;
-	vector<int> *norms;
-	vector<int> *texts;
+	vector<int> verts;
+	vector<int> norms;
+	vector<int> texts;
 	 
 };
 
