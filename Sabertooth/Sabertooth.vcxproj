@@ -144,8 +144,15 @@
     <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\mesa\mesa01.mtl" />
     <None Include="Shaders\Core\core.frag" />
     <None Include="Shaders\Core\core.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\..\mesa\mesa01.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\mesa\mesa01.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
