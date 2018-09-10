@@ -22,9 +22,6 @@
     <Filter Include="OBJS">
       <UniqueIdentifier>{91c11ea9-dec5-45ca-b072-58758a9e25e7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="OBJS\Mesa">
-      <UniqueIdentifier>{fed37025-6e88-47d6-b85b-8deb02ca3c00}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Shader.cpp">
@@ -79,24 +76,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\Core\core.frag">
+    <None Include="Shaders\Core\core.fs">
       <Filter>Shaders\Core</Filter>
     </None>
-    <None Include="Shaders\Core\core.vert">
+    <None Include="Shaders\Core\core.vs">
       <Filter>Shaders\Core</Filter>
     </None>
-    <None Include="..\..\mesa\mesa01.mtl">
-      <Filter>OBJS\Mesa</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\mesa\mesa01.bmp">
-      <Filter>OBJS\Mesa</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="..\..\mesa\mesa01.obj">
-      <Filter>OBJS\Mesa</Filter>
-    </Object>
   </ItemGroup>
 </Project>
