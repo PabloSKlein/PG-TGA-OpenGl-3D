@@ -18,6 +18,13 @@ class Face
 {
 public:
 	Face();
+
+	Face(std::vector<int> vertsArr, std::vector<int> normsArr, std::vector<int> textsArr) {
+		verts = vertsArr;
+		norms = normsArr;
+		texts = textsArr;
+	}
+
 	~Face();
 
 	vector<int> verts;
