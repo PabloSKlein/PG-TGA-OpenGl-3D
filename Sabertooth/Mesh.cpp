@@ -4,6 +4,7 @@
 
 Mesh::Mesh()
 {
+
 }
 
 
@@ -31,20 +32,17 @@ void Mesh::AddGroup(std::vector<int> vertexIndices, std::vector<int> normalIndic
 	groups.push_back(newGroup);
 }
 
-void Mesh::AddVertex(glm::vec3 vertex)
+void Mesh::addVertexItem(glm::vec3* vertex)
 {
-	glm::vec3* newVertex = new glm::vec3(vertex);
-	this->vertex.push_back(newVertex);
+	this->vertex.push_back(vertex);
 }
 
-void Mesh::AddNormal(glm::vec3 normal)
+void Mesh::addNormalItem(glm::vec3* normal)
 {
-	glm::vec3* newNormal = new glm::vec3(normal);
-	normals.push_back(newNormal);
+	normals.push_back(normal);
 }
 
-void Mesh::AddMapping(glm::vec2 mapping)
+void Mesh::addMappingItem(glm::vec2* mapping)
 {
-	glm::vec2* newMapping = new glm::vec2(mapping);
-	mappings.push_back(newMapping);
+	mappings.push_back(mapping);
 }

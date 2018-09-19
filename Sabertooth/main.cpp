@@ -8,41 +8,29 @@
 #include <glm\gtc\matrix_transform.hpp>
 #include <glm\gtc\type_ptr.hpp>
 
+#include "Shader.h"
 #include "Mesh.h"
 #include "Group.h"
 #include "Face.h"
 #include "Material.h"
-#include "Shader.h"
 
+// screen
 int WIDTH = 1280;
 int HEIGHT = 800;
 
-Mesh *mesh;
-Group *group;
-Face *face;
-
-vector<Material> materialLib;
-
 void read() {
 
-	//leitura do arquivo obj
+	// Leitura do arquivo obj
 
 }
 
 void drawScene() {
 
-	//desenha na tela
+	// Desenha na tela
 
 }
 
 int main() {
-
-	face = new Face;
-
-	group = new Group();
-
-	group->faces.push_back(face);
-
 
 	///////// Gera a tela
 
@@ -75,80 +63,130 @@ int main() {
 
 	glViewport(0, 0, screenWidth, screenHeight);
 
+
 	///////// Carrega o shader
 
 	Shader ourShader("Shaders/Core/core.vs", "Shaders/Core/core.fs");
+
 
 	///////// Vertices
 
 	GLfloat vertices[] = {
 		//position				//color
-		-0.5f, -0.5, 0.0f,		1.0f, 0.0f, 0.0f, //bottom left  //red
-		0.5f, -0.5f, 0.0f,		0.0f, 1.0f, 0.0f, //bottom right //green
-		0.0f, 0.5f, 0.0f,		0.0f, 0.0f, 1.0f  //middle top   //blue
+		-0.5f, -0.5, 0.0f,		//1.0f, 0.0f, 0.0f, //bottom left  //red
+		0.5f, -0.5f, 0.0f,		//0.0f, 1.0f, 0.0f, //bottom right //green
+		0.0f, 0.5f, 0.0f,		//0.0f, 0.0f, 1.0f  //middle top   //blue
 	};
 
-	/*for
 
-	f = group->faces[i];
-	for
-	vi = f->verts[j];
-	vec3* v = mesh->vertices[vi];
+	///////// Leitura e gravação das meshs a partir dos vertices, normais e texturas
+	///////// *** No caso aqui só vertices mesmo ***
 
-	mesh = new Mesh();*/
+	std::vector<Mesh*>* newMeshVector = new std::vector<Mesh*>();
 
-	//mesh->mappings.push_back(new glm::vec2(0, 0));
-	//mesh->mappings[0]->x = 0;
-	//vector<glm::vec2 *> vector_mappings = new vector<glm::vec2*>();
+	// Alterar depois: gerar um Mesh para cada triangulo, aqui no caso so tem um triangulo
+	Mesh* newMesh = new Mesh();
+	
+	int i = 9;
+	while (i < 9) {
 
-	///////// Gera VAO e VBO
+		glm::vec3* newVertex = new glm::vec3();
 
-	GLuint VBO, VAO;
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+		newVertex->x = vertices[i];
+		newVertex->y = vertices[i];
+		newVertex->z = vertices[i];
 
-	glBindVertexArray(VAO);
+		newMesh->addVertexItem(newVertex);
+		
+	}
+	newMeshVector->push_back(newMesh);
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	//positions
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid *)0);
-	glEnableVertexAttribArray(0);
+	///////// Leitura e gravação dos nomes de materiais
 
-	//colors
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid *)(3 * sizeof GLfloat));
-	glEnableVertexAttribArray(1);
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	/////////// Cria os grupos e linka com os materiais
 
-	glBindVertexArray(0);
+
+
+	/////////// Bind todas as meshs
+
+
+	/////////// Projection e camera
+
+	
 	
 	///////// Loop gerar na tela
 
 	while (!glfwWindowShouldClose(window)) {
+		
 		glfwPollEvents();
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		//shaders
+
+		///////// Model, view, projection, camera
+
+
+
+		///////// Use shader
+
 		ourShader.Use();
 
-		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		glBindVertexArray(0);
 
-		glfwSwapBuffers(window);
+			
+
+		///////// VAO
+
+
+
+		///////// Iterar através de diferentes meshs
+		//for () {
+
+
+			///////// Iterar através dos grupos
+			//for () {
+				
+					//glBindVertexArray((*group)->VAO());
+
+					
+					
+					///////// Cair pra cada uma das texturas
+
+					glEnable(GL_TEXTURE_2D);
+
+						//if () {
+
+							//////// Pega a textura
+
+							//glUniform1i(textureLocation, textureId);
+							//glBindTexture(GL_TEXTURE_2D, textureId);
+
+						//}
+					
+
+					//glDrawArrays(GL_TRIANGLES, 0, (*group)->GetFacesSize() * 3);
+					//glDisable(GL_TEXTURE_2D);
+
+
+				//}
+			//}
+		//}
+
+		//glfwSwapBuffers(window);
+	//}
+	
+	///////// Deletar shader
+
+
+
+	///////// Fecha a janela
+
+	//glfwTerminate();
+
+
 	}
-
-	///////// Deleta os VAO e VBO atuais
-
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-
-	glfwTerminate();
-	return EXIT_SUCCESS;
 
 }
 

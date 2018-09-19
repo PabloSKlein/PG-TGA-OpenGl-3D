@@ -27,9 +27,10 @@ public:
 	void AddGroup();
 	void AddGroup(std::string name);
 	void AddGroup(std::vector<int> vertexIndices, std::vector<int> normalIndices, std::vector<int> mappingIndices);
-	void AddVertex(glm::vec3 vertex);
-	void AddNormal(glm::vec3 normal);
-	void AddMapping(glm::vec2 mapping);
+
+	void addVertexItem(glm::vec3* vertex);
+	void addNormalItem(glm::vec3* normal);
+	void addMappingItem(glm::vec2* mapping);
 
 
 };
