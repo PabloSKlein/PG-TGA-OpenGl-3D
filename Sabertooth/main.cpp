@@ -7,16 +7,27 @@
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 #include <glm\gtc\type_ptr.hpp>
+#include <GLFW/glfw3.h>
 
 #include "Shader.h"
 #include "Mesh.h"
 #include "Group.h"
 #include "Face.h"
 #include "Material.h"
+#include "Camera.h"
+
+using namespace glm;
 
 // screen
 int WIDTH = 1280;
 int HEIGHT = 800;
+
+void KeyCallBack(GLFWwindow *window, int key, int scancode, int action, int mode);
+void ScrollCallBack(GLFWwindow *window, double xoffset, double yoffset);
+void DoMovement();
+
+Camera camera(vec3(0.0f, 0.0f, 3.0f));
+
 
 void read() {
 
